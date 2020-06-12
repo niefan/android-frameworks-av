@@ -33,6 +33,7 @@ struct AReplyToken;
 struct IHDCP;
 class IRemoteDisplayClient;
 struct ParsedMessage;
+struct TimeSyncer;
 
 // Represents the RTSP server acting as a wifi display source.
 // Manages incoming connections, sets up Playback sessions as necessary.
@@ -86,6 +87,7 @@ private:
         kWhatHDCPNotify,
         kWhatFinishStop2,
         kWhatTeardownTriggerTimedOut,
+        kWhatTimeSyncerNotify,
     };
 
     struct ResponseID {
@@ -124,6 +126,7 @@ private:
     sp<ANetworkSession> mNetSession;
     sp<IRemoteDisplayClient> mClient;
     AString mMediaPath;
+    sp<TimeSyncer> mTimeSyncer;
     struct in_addr mInterfaceAddr;
     int32_t mSessionID;
 
